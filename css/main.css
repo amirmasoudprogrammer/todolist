@@ -1,0 +1,9 @@
+@font-face
+{
+    font-family: tanha;
+    src: url("../fonts/yekan-font/Yekan.ttf"),url("../fonts/yekan-font/Yekan.woff"),url("../fonts/yekan-font/yekan-regular.ttf"),url("../fonts/yekan-font/yekan-regular.woff");
+}
+*
+{
+    font-family: tanha,Tahoma;
+}
