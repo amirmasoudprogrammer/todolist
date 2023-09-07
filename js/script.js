@@ -12,6 +12,7 @@ function starttodo() {
    const input=document.createElement("input");
    input.type="checkbox";
     list_div.appendChild(input);
+    savelocalStorage(textinput.value)
 
    const li_list=document.createElement("li");
    li_list.innerText=textinput.value;
@@ -33,4 +34,43 @@ function starttodo() {
 
     listtodo.appendChild(list_div)
 
+}
+
+
+function savelocalStorage(todo) {
+    let todos;
+    if (localStorage.getItem("todos") === null){
+        todos = [];
+    }else {
+        todos =JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.push(todo);
+    localStorage.setItem("todos",JSON.stringify(todos))
+}
+
+
+listtodo.addEventListener("click",startlist)
+
+function startlist(event) {
+     const item =event.target;
+     if (item.classList[0] === "terash"){
+         const items =item.parentElement;
+         items.classList.toggle("active");
+     }if (item.classList[0] === "cloes"){
+        const items =item.parentElement;
+        items.remove();
+        removelocal(todo);
+    }
+}
+
+function removelocal(todo) {
+    let todos;
+    if (localStorage.getItem("todos") === null){
+        todos = [];
+    }else {
+        todos =JSON.parse(localStorage.getItem("todos"));
+    }
+    const todoindex =todo.children[0].innerText;
+         todos.splice(todos.indexOf(todoindex), 1);
+         localStorage.setItem("todos",JSON.stringify("todos"))
 }
